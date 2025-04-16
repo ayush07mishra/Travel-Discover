@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2023/08/19/176796-856056418_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>Discover Canada</h1>
+            <p>A Land of Natural Beauty and Modern Marvels</p>
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <!-- Place 1 -->
+            <div class="place">
+                <img src="https://cdn.britannica.com/30/94430-050-D0FC51CD/Niagara-Falls.jpg" alt="Niagara Falls">
+                <div class="place-details">
+                    <h2>Niagara Falls</h2>
+                    <p>Niagara Falls, located on the border of Ontario and New York, is a world-famous natural wonder.
+                        The thunderous roar and misty cascades leave visitors in awe.</p>
+                </div>
+            </div>
+            <!-- Place 2 -->
+            <div class="place">
+                <img src="https://banffnationalpark.com/wp-content/uploads/2009/06/pexels-photo-417074.jpeg "
+                    alt="Banff National Park">
+                <div class="place-details">
+                    <h2>Banff National Park</h2>
+                    <p>Banff National Park, nestled in the Canadian Rockies, is a haven for nature lovers. Its turquoise
+                        lakes, towering mountains, and vibrant wildlife are unforgettable.</p>
+                </div>
+            </div>
+            <!-- Place 3 -->
+            <div class="place">
+                <img src="https://i.natgeofe.com/n/720ceef5-db9c-4531-b164-aa091c133b0f/upper-town-winter-old-quebec-city-canada_4x3.jpg"
+                    alt="Old Quebec">
+                <div class="place-details">
+                    <h2>Old Quebec</h2>
+                    <p>Old Quebec, a UNESCO World Heritage Site, is a charming historic district. Its cobblestone
+                        streets and European architecture transport visitors back in time.</p>
+                </div>
+            </div>
+            <!-- Place 4 -->
+            <div class="place">
+                <img src="https://funworldfacts.com/wp-content/uploads/2023/08/cn-tower-facts.jpg" alt="CN Tower">
+                <div class="place-details">
+                    <h2>CN Tower</h2>
+                    <p>The CN Tower in Toronto stands as a modern architectural marvel. Its observation deck offers
+                        breathtaking panoramic views of the city and beyond.</p>
+                </div>
+            </div>
+            <!-- Place 5 -->
+            <div class="place">
+                <img src="https://www.moon.com/wp-content/uploads/2019/01/Vancouver_StanleyParkSeawall_jamesvancouver-iStock-520298306.jpg"
+                    alt="Stanley Park">
+                <div class="place-details">
+                    <h2>Stanley Park</h2>
+                    <p>Stanley Park, in Vancouver, is a sprawling urban park. With scenic trails, beaches, and the
+                        iconic seawall, it’s perfect for outdoor enthusiasts.</p>
+                </div>
+            </div>
+            <!-- Place 6 -->
+            <div class="place">
+                <img src="https://i.natgeofe.com/n/27b589df-d149-4101-bd63-4c35bb4467d3/36744.jpg"
+                    alt="Jasper National Park">
+                <div class="place-details">
+                    <h2>Jasper National Park</h2>
+                    <p>Jasper National Park is a serene escape in the Rockies. It offers starry skies, glacier-fed
+                        lakes, and thrilling outdoor adventures like hiking and kayaking.</p>
+                </div>
+            </div>
+            <!-- Place 7 -->
+            <div class="place">
+                <img src="https://going-cms-strapi.s3.us-east-1.amazonaws.com/web_1920x1200_charlottetown_63558f648a.webp"
+                    alt="Prince Edward Island">
+                <div class="place-details">
+                    <h2>Prince Edward Island</h2>
+                    <p>Prince Edward Island enchants visitors with its red-sand beaches and rolling green fields. It’s a
+                        literary haven as the setting of *Anne of Green Gables*.</p>
+                </div>
+            </div>
+            <!-- Place 8 -->
+            <div class="place">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Centre_Block_-_Parliament_Hill.jpg"
+                    alt="Parliament Hill">
+                <div class="place-details">
+                    <h2>Parliament Hill</h2>
+                    <p>Parliament Hill in Ottawa is a political and historical landmark. The Gothic Revival buildings
+                        and daily Changing of the Guard ceremony are highlights.</p>
+                </div>
+            </div>
+            <!-- Place 9 -->
+            <div class="place">
+                <img src="https://i.ytimg.com/vi/prYdVEzbKew/maxresdefault.jpg" alt="Gros Morne National Park">
+                <div class="place-details">
+                    <h2>Gros Morne National Park</h2>
+                    <p>Gros Morne National Park in Newfoundland is a geological wonder. Its fjords, mountains, and
+                        unique landscapes are a UNESCO World Heritage treasure.</p>
+                </div>
+            </div>
+            <!-- Place 10 -->
+            <div class="place">
+                <img src="https://www.novascotia.com/sites/default/files/inline-images/Kayaking%20at%20Three%20Sisters%201920x1020.jpg"
+                    alt="Bay of Fundy">
+                <div class="place-details">
+                    <h2>Bay of Fundy</h2>
+                    <p>The Bay of Fundy, known for the world’s highest tides, is a natural marvel. Its dramatic cliffs
+                        and marine life are perfect for nature exploration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations - Netherlands</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2023/10/29/187042-879581086_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Discover Netherlands</h1>
+        <p>The Land of Tulips, Canals, and Culture</p>
+    </section>
+
+    <!-- Places Section -->
+    <section class="places">
+        <div class="place">
+            <img src="https://images8.alphacoders.com/523/523695.jpg" alt="Amsterdam">
+            <div class="place-details">
+                <h2>Amsterdam</h2>
+                <p>
+                    Famous for its canals, museums, and vibrant nightlife, Amsterdam offers a perfect blend of history
+                    and modernity.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://4kwallpapers.com/images/wallpapers/windmills-at-kinderdijk-south-holland-netherlands-2560x1080-8078.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Kinderdijk</h2>
+                <p>
+                    A UNESCO World Heritage Site, this iconic area is renowned for its traditional windmills and
+                    picturesque landscapes.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c4.wallpaperflare.com/wallpaper/565/240/885/netherlands-holland-rotterdam-wallpaper-preview.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Rotterdam</h2>
+                <p>
+                    A city of innovation and contemporary architecture, Rotterdam is the Netherlands’ modern counterpart
+                    to Amsterdam. It features striking buildings like the Cube Houses and the Erasmus Bridge..
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c0.wallpaperflare.com/preview/231/312/926/utrecht-netherlands-utrecht-canals-summer-thumbnail.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Utrecht</h2>
+                <p>
+                    Utrecht is one of the oldest cities in the Netherlands, known for its unique canal system with wharf
+                    cellars. The medieval city center is compact and brimming with history.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c4.wallpaperflare.com/wallpaper/88/503/639/5bd3212310c14-wallpaper-preview.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>The Hague </h2>
+                <p>
+                    The Hague is the political heart of the Netherlands and home to international institutions like the
+                    International Court of Justice. It offers a blend of royal history and coastal charm.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c4.wallpaperflare.com/wallpaper/484/684/8/the-sky-the-sun-clouds-trees-wallpaper-preview.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Delft</h2>
+                <p>
+                    his charming city is famous for its Delft Blue pottery and connections to the Dutch royal family.
+                    The cobblestone streets and quiet canals make it a serene getaway.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="place">
+            <img src="https://content.r9cdn.net/rimg/dimg/c6/05/cb83fc82-city-69115-175257f608b.jpg?width=1366&height=768&xhint=1437&yhint=851&crop=true&watermarkposition=lowerright"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Giethoorn</h2>
+                <p>
+                    A tranquil village often called the "Venice of the North," Giethoorn is known for its thatched-roof
+                    houses and canals. It’s a car-free haven where boats are the primary mode of transport.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://t4.ftcdn.net/jpg/01/63/79/65/360_F_163796582_CkKZZILq6LFkWMgMWC8DXKFY3gGJj9ol.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Maastricht</h2>
+                <p>
+                    Situated in the southern part of the Netherlands, Maastricht is a vibrant city with a unique blend
+                    of Dutch and Belgian influences. Its history dates back to Roman times..
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://plus.unsplash.com/premium_photo-1661962703455-a0f4118c37e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Haarlem</h2>
+                <p>
+                    A smaller, quieter version of Amsterdam, Haarlem is steeped in history and charm. It is a great
+                    place to experience Dutch art and culture without the crowds
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://plus.unsplash.com/premium_photo-1661931625680-cd916bc75340?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2> Zaanse Schans</h2>
+                <p>
+                    This open-air museum near Amsterdam gives a glimpse into 18th and 19th-century Dutch life. It is
+                    famous for its well-preserved windmills and traditional crafts.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://img.freepik.com/premium-photo/scenic-view-keukenhof-tulip-garden-lisse-netherlands-keukenhof-is-most-beautiful-spring-garden-world-beautiful-ornamental-garden-landscape-lisse_1033579-220139.jpg"
+                alt="Kinderdijk">
+            <div class="place-details">
+                <h2>Keukenhof and Lisse</h2>
+                <p>
+                    Keukenhof is one of the world’s largest flower gardens, showcasing millions of tulips in spring. The
+                    nearby Flower Strip (Bollenstreek) offers stunning fields of colorful blooms.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Add more Dutch destinations here -->
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Explore Netherlands. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const places = document.querySelectorAll('.place');
+
+        function revealPlaces() {
+            places.forEach((place) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = place.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    place.classList.add('visible');
+                } else {
+                    place.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealPlaces);
+        revealPlaces();
+    </script>
+
+</body>
+
+</html>

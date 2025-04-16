@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2020/08/23/47905-452168431_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h1>Discover France</h1>
+            <p>A Land of Art, Romance, and History</p>
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <div class="place">
+                <img src="data:image/jpeg;base64,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6lm056Wu056bjanPUtac0AfMRCwOc552aMutbmgfQV8wuLqoiP8A9J4iHV08zU4Rzbgg0DnODWHKQXlGGS5tIuw6xsR0Py91py1MYxuZ4Z4aeU5VF2pkLba4m2kg9dq7brs0fs4/9ufV5n/pnnrdbVtTnJZtDMlm1Ocpa7U5qWbU5yWbTnJa7TnKTJtabMsZkpyx6og7bLGYWH3fhPx/JpnwiXHURQte2OKQbMDuuPpuAuLPp4u4/wAN06szFPC8R8ZZqJXyNjERe4uLW/hF+notulhOMV3app4Ek3uCt0JTidKskpnmItMlygvMWyymhKpMpS85CmTKlrTPMVspOYm4ozTcUZpuKM03FJmm5aM03FGabykzTeUZqbyjJNxRmpuWnd4JqCzUwOBr71gvrs44nbvsTstHVRv0c8fo3dPls1cZ+r6nTtazXapzXUBEX/lNkht7eux6eq8PK8+n04mPentREY62c/S3xLpLJJ6kkn4lfQxMRFPAnmbZyV3JRkpuKMk3FGSblpMlNxRkm4otNxRabijJTcUocruKcjZqWKUOlKpTjLk3LSZKbijJLKMksoyWVlGSWUuSbiktNxRalhaWFpYlpYWlqKWCWCWCWCWClglitcQQRsQbBHYqTNkcPttfqCX62QNIvSBtjscXdq/dd14ulhEenjfbKXuauU1qZV3xj9XxC9q3hiWCWCWIlglglgoCAgICoKAgICAgqtiJYJYICAlgoCAgICAgICAgICD6zXazKOV9EZcP0zegA3c5t9gfr3XmaenWcR/yy/L+eHramd6Uz/xx/N8mvTeSICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg+h1EpOj/ABNIOm0zaB6YzP2Pqf6rhxiPX7e8/lD0csv9P90fnL55dzzhAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEHat4i6fdu8odRq2kOIB/iH6rDbjuv3bN2W2vZ1Vm1iAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgILe1druu1oIgICAgICAgICAgICAgICAgIP//Z"
+                    alt="Eiffel Tower, Paris">
+                <div class="place-details">
+                    <h2>Eiffel Tower, Paris</h2>
+                    <p>"An icon of Paris and one of the most recognizable structures in the world, the Eiffel Tower
+                        offers sweeping views of the city. This architectural marvel, designed by Gustave Eiffel, is a
+                        must-visit for travelers to France."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://media.cntraveler.com/photos/57d961ce3e6b32bf25f5ad0f/16:9/w_2560,c_limit/most-beautiful-paris-louvre-GettyImages-536267205.jpg"
+                    alt="Louvre Museum, Paris">
+                <div class="place-details">
+                    <h2>Louvre Museum</h2>
+                    <p>"Home to thousands of works of art, including the Mona Lisa, the Louvre is the world's largest
+                        museum. Its stunning glass pyramid entrance and extensive art collection make it a cultural
+                        treasure."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://en.normandie-tourisme.fr/wp-content/uploads/sites/3/2023/07/baie-mont-saint-michel-de-nuit-marc-lerouge.jpg"
+                    alt="Mont Saint-Michel, Normandy">
+                <div class="place-details">
+                    <h2>Mont Saint-Michel</h2>
+                    <p>"A medieval abbey perched atop a rocky island, Mont Saint-Michel is a breathtaking sight.
+                        Surrounded by vast sandbanks and quicksand at high tide, it has fascinated visitors for
+                        centuries."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/shutterstock_2264734615_ss_non-editorial_rfwvea?_a=BAVARSDW0"
+                    alt="Palace of Versailles">
+                <div class="place-details">
+                    <h2>Palace of Versailles</h2>
+                    <p>"Once the royal residence of King Louis XIV, the Palace of Versailles is renowned for its opulent
+                        architecture, elaborate gardens, and the famous Hall of Mirrors."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://provence-alpes-cotedazur.com/app/uploads/crt-paca/2020/07/thumbs/nice-paca-credit-fotolia-1-1920x960.jpg"
+                    alt="Côte d'Azur">
+                <div class="place-details">
+                    <h2>Côte d'Azur</h2>
+                    <p>"Known for its stunning beaches, glamorous resorts, and azure-blue waters, the French Riviera is
+                        a luxurious Mediterranean paradise that has attracted artists, celebrities, and travelers
+                        alike."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.ot-saumur.fr/wp-content/uploads/apidae/2870fb2daa8b782ba9c2ba36b9d7e393-19178416-1600x900.jpg"
+                    alt="Château de Chenonceau, Loire Valley">
+                <div class="place-details">
+                    <h2>Château de Chenonceau</h2>
+                    <p>"This beautiful château spans the River Cher and is renowned for its Renaissance architecture,
+                        landscaped gardens, and role in French history."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/07/04/3216cd5c7fa5eb7108dc772164670d0b_1000x1000.jpg"
+                    alt="Old Lyon">
+                <div class="place-details">
+                    <h2>Old Lyon</h2>
+                    <p>"A UNESCO World Heritage Site, Old Lyon is famous for its Renaissance buildings, narrow
+                        passageways known as 'traboules,' and a rich culinary tradition."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://rivierabarcrawltours.com/wp-content/uploads/2020/04/provence-pic.jpg" alt="Provence">
+                <div class="place-details">
+                    <h2>Provence</h2>
+                    <p>"Provence is known for its lavender fields, charming villages, and Roman ruins. The region is
+                        especially popular for its stunning landscapes and warm Mediterranean climate."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.pelago.com/img/products/CH-Switzerland/chamonix-mont-blanc-full-day-guided-tour/8a420d2b-a3ab-4664-b1c3-7a0e261740c7_chamonix-mont-blanc-full-day-guided-tour-xlarge.jpg"
+                    alt="Chamonix-Mont-Blanc">
+                <div class="place-details">
+                    <h2>Chamonix-Mont-Blanc</h2>
+                    <p>"Located in the French Alps, Chamonix is a premier destination for winter sports and home to Mont
+                        Blanc, the highest mountain in Western Europe."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://en.camping-labaroche.com/cache/images/content/c86e5311f2b60d5a8850c550ab6ee0a2-riviere-traversant-le-village-de-kaysersberg-12.jpg"
+                    alt="Alsace Wine Route">
+                <div class="place-details">
+                    <h2>Alsace Wine Route</h2>
+                    <p>"This picturesque wine route winds through charming villages and vineyards in the Alsace region,
+                        offering a taste of some of France’s finest wines."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>

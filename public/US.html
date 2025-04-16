@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2022/03/16/110921-689510582_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>Discover the USA</h1>
+            <p>Land of Diversity, Culture, and Natural Wonders</p>
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <div class="place">
+                <img src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/newyorkstate/statueofliberty_marleywhite_ade589d3-cd9a-bb18-49e62d2eff2efad5.jpg"
+                    alt="Statue of Liberty">
+                <div class="place-details">
+                    <h2>Statue of Liberty</h2>
+                    <p>"A symbol of freedom and democracy, the Statue of Liberty stands tall on Liberty Island in New
+                        York Harbor. It welcomes visitors to the city that never sleeps."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.globalnationalparks.com/wp-content/uploads/national-park-grand-canyon.jpg"
+                    alt="Grand Canyon">
+                <div class="place-details">
+                    <h2>Grand Canyon</h2>
+                    <p>"Carved by the Colorado River over millions of years, the Grand Canyon in Arizona is a natural
+                        wonder of breathtaking proportions. Its stunning vistas draw visitors from around the globe."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://i.natgeofe.com/k/dc7d6bb7-d935-49b2-ab3d-1fc835e4f937/Yosemitewaterfall.jpg?wp=1&w=1084.125&h=609"
+                    alt="Yosemite National Park">
+                <div class="place-details">
+                    <h2>Yosemite National Park</h2>
+                    <p>"Located in California's Sierra Nevada mountains, Yosemite National Park is renowned for its
+                        towering granite cliffs, ancient sequoias, and roaring waterfalls."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.heritagedaily.com/wp-content/uploads/2023/01/rushmore.jpg" alt="Mount Rushmore">
+                <div class="place-details">
+                    <h2>Mount Rushmore</h2>
+                    <p>"A monumental sculpture carved into the Black Hills of South Dakota, Mount Rushmore honors four
+                        U.S. presidents who shaped the nation's history."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.funtour.com.uy/wp-content/uploads/2023/11/DSC03182-1.jpg" alt="Walt Disney World">
+                <div class="place-details">
+                    <h2>Walt Disney World</h2>
+                    <p>"Located in Florida, Walt Disney World is the most magical place on Earth. Its iconic Cinderella
+                        Castle and thrilling attractions make it a favorite for families."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://content.paulreiffer.com/wp-content/uploads/2012/01/Paul_Reiffer_Photographer_San_Francisco_Bay_Bridge_Cityscape_Treasure_Island_Sunset_Red_Sky.jpg"
+                    alt="Golden Gate Bridge">
+                <div class="place-details">
+                    <h2>Golden Gate Bridge</h2>
+                    <p>"An engineering marvel and iconic symbol of San Francisco, the Golden Gate Bridge spans the
+                        Pacific Ocean with its stunning red towers."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.yellowstonedestination.com/wp-content/uploads/2018/05/kwyinnc3dqwajx3sa9bj.jpg"
+                    alt="Yellowstone National Park">
+                <div class="place-details">
+                    <h2>Yellowstone National Park</h2>
+                    <p>"The first national park in the world, Yellowstone is home to geysers, hot springs, and diverse
+                        wildlife. It's a haven for nature enthusiasts."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.niagarafallslive.com/wp-content/uploads/niagara-falls-frozen-colors-1300x825-250k.jpg"
+                    alt="Niagara Falls">
+                <div class="place-details">
+                    <h2>Niagara Falls</h2>
+                    <p>"Located on the border between the USA and Canada, Niagara Falls is a breathtaking natural
+                        wonder. Its powerful waterfalls are a must-see attraction."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/12/33/9d/50.jpg"
+                    alt="Las Vegas Strip">
+                <div class="place-details">
+                    <h2>Las Vegas Strip</h2>
+                    <p>"The entertainment capital of the world, Las Vegas is famous for its vibrant nightlife, casinos,
+                        and dazzling shows."</p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://pyxis.nymag.com/v1/imgs/dc6/b67/824aa5e608a5357f142521d7546782cf52-Rendering4STREET.2x.rsocial.w600.jpg"
+                    alt="Times Square">
+                <div class="place-details">
+                    <h2>Times Square</h2>
+                    <p>"Known as 'The Crossroads of the World,' Times Square in New York City is a bustling hub of
+                        lights, Broadway theaters, and attractions."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>

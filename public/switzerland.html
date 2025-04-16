@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2020/07/12/44509-439412962_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Discover Switzerland</h1>
+        <p>The Land of Alps and Lakes</p>
+    </section>
+    <!-- Places Section -->
+    <section class="places">
+        <!-- 10 Places of Switzerland -->
+        <div class="place">
+            <img src="https://images.unsplash.com/photo-1552138372-e5618961a0d6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>Zermatt</h2>
+                <p>Home to the iconic Matterhorn mountain, Zermatt offers world-class skiing and stunning alpine vistas.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://t4.ftcdn.net/jpg/01/71/50/13/360_F_171501370_b2W8TUGgbqFFOQ1SzI1Pn8qQ8qL5MEUo.jpg"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>Interlaken</h2>
+                <p>A popular adventure destination, Interlaken lies between Lake Thun and Lake Brienz. It is the gateway
+                    to the Bernese Oberland region, offering endless outdoor activities..</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://images.unsplash.com/photo-1477271706509-fecda7438b68?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>Lucerne</h2>
+                <p>Lucerne is a picturesque city surrounded by mountains and located on Lake Lucerne. It is known for
+                    its medieval architecture, wooden bridges, and lively cultural scene</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://images.unsplash.com/photo-1566330409389-192ac5e0391e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>Zurich</h2>
+                <p> Zurich is Switzerland’s largest city, combining a vibrant cultural scene with stunning natural
+                    surroundings. It’s a global financial hub known for its clean streets, high-end shops, and historic
+                    landmarks..</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://t3.ftcdn.net/jpg/01/10/35/00/360_F_110350006_AnTDnHO6vMDN1sjs2wEXHdxzyGI3SqWS.jpg"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2> Geneva</h2>
+                <p>Situated on the shores of Lake Geneva, this cosmopolitan city is home to numerous international
+                    organizations, including the UN. It’s a blend of modernity and tradition..</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://images.unsplash.com/photo-1728763832845-8556f157e294?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2> Grindelwald</h2>
+                <p> Grindelwald is a picturesque village in the Jungfrau region, surrounded by dramatic peaks and lush
+                    valleys. It’s a paradise for hikers and nature lovers.</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c0.wallpaperflare.com/preview/278/741/317/lausanne-switzerland-morning-light-thumbnail.jpg"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2> Lausanne</h2>
+                <p>Located on Lake Geneva, Lausanne is a city with a vibrant mix of culture, history, and innovation. It
+                    is home to the International Olympic Committee.</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://c4.wallpaperflare.com/wallpaper/734/312/30/bern-wallpaper-preview.jpg" alt="Zermatt">
+            <div class="place-details">
+                <h2>Bern</h2>
+                <p>The capital city of Switzerland, Bern boasts a well-preserved medieval old town, which is a UNESCO
+                    World Heritage site. Its cobbled streets and historical sites offer a timeless charm.
+                </p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://m.economictimes.com/thumb/msid-51757932,width-1600,height-900,resizemode-4,imgsize-87285/st-moritz-is-the-glitziest-alpine-playground-to-ski-and-luxuriate-in-spiffy-hotels.jpg"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>St. Moritz</h2>
+                <p>A luxury alpine resort town, St. Moritz is renowned for its glamorous ski scene and pristine mountain
+                    landscapes. It has hosted the Winter Olympics twice.</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://plus.unsplash.com/premium_photo-1690464561785-e7e82e9ced74?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Zermatt">
+            <div class="place-details">
+                <h2>Lauterbrunnen</h2>
+                <p>Known as the “Valley of 72 Waterfalls,” Lauterbrunnen is a stunning destination with towering cliffs,
+                    picturesque villages, and cascading waterfalls.</p>
+            </div>
+        </div>
+
+
+
+        <!-- Add other places similarly -->
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Explore Russia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const places = document.querySelectorAll('.place');
+
+        function revealPlaces() {
+            places.forEach((place) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = place.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    place.classList.add('visible');
+                } else {
+                    place.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealPlaces);
+        revealPlaces();
+    </script>
+
+</body>
+
+</html>

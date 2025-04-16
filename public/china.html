@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            /* Make the navbar fixed to the top */
+            width: 100%;
+            /* Full width */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent black background */
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+            /* Keep it above other content */
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            /* Max width for the navigation bar */
+            margin: auto;
+            /* Center the navbar */
+            padding: 1rem 1rem;
+            /* Increased padding for a wider navbar */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Space between logo and links */
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            /* Increase font size for the logo */
+            font-weight: 600;
+            color: #ffffff;
+            /* White text color */
+            text-decoration: none;
+            /* Remove underline */
+            flex-grow: 1;
+            /* Allow the logo to take available space */
+            text-align: center;
+            /* Center the logo text */
+        }
+
+        .nav__links {
+            list-style: none;
+            /* Remove bullet points from list */
+            display: flex;
+            align-items: center;
+            /* Center the links vertically */
+            gap: 2rem;
+            /* Space between the links */
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            /* Padding for links */
+            font-weight: 500;
+            color: #ffffff;
+            /* White text color */
+            transition: 0.3s;
+            /* Transition effect */
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            /* White text color */
+            cursor: pointer;
+            /* Pointer cursor for the search icon */
+        }
+
+        /* Full-screen video section at the top */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+            /* No margin needed for the fixed navbar */
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cover the whole hero section */
+            z-index: -1;
+            /* Keep video behind other elements */
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+            margin-bottom: 30px;
+            /* Adjust this value as needed */
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            /* Adjust the offset as needed */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+
+        /* Section with place images and descriptions */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2022/05/25/118087-713900116_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Unveil China</h1>
+        <p>A Nation of Timeless Traditions and Cutting-Edge Innovation</p>
+
+
+    </section>
+
+    <!-- Places Section -->
+    <section class="places">
+        <div class="place">
+            <img src="https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638892506/EducationHub/photos/the-great-wall-of-china.jpg"
+                alt="Great Wall of China">
+            <div class="place-details">
+                <h2>Great Wall of China</h2>
+                <p>"One of the most iconic landmarks in the world, the Great Wall of China stretches over 13,000 miles,
+                    weaving through mountains, valleys, and deserts. This ancient fortification, built to protect
+                    against invasions, offers spectacular views and a glimpse into China's rich history and engineering
+                    marvels."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=2080x10000:format=jpg/path/s2217cd0bb1220415/image/i924c52c240be26ee/version/1683854111/the-forbidden-city-beijing.jpg"
+                alt="Forbidden City, Beijing">
+            <div class="place-details">
+                <h2>Forbidden City</h2>
+                <p>"Located in the heart of Beijing, the Forbidden City was once the imperial palace of the Ming and
+                    Qing Dynasties. With its vast courtyards, halls, and intricate architecture, it now serves as a
+                    museum showcasing China's royal heritage."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT5yi5b7lJ_xyCbpEHoyIuN_9rKGa20JcJcw&s"
+                alt="Li River, Guilin">
+            <div class="place-details">
+                <h2>Li River</h2>
+                <p>"Famous for its karst mountain landscapes and serene waters, the Li River in Guilin is a picturesque
+                    escape. The dramatic scenery along the river is often described as 'the finest under heaven,' and
+                    it’s best explored by boat or on a scenic hike."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://live.staticflickr.com/7285/26315058764_9143ca1921_b.jpg"
+                alt="Zhangjiajie National Forest Park">
+            <div class="place-details">
+                <h2>Zhangjiajie National Forest Park</h2>
+                <p>"Known for its towering sandstone pillars, Zhangjiajie National Forest Park inspired the floating
+                    mountains in the movie Avatar. This UNESCO World Heritage Site offers breathtaking views of its
+                    unique rock formations, lush forests, and sky-high glass bridges."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://whc.unesco.org/uploads/thumbs/site_0707_0001-1200-630-20110920202629.jpg"
+                alt="Potala Palace, Tibet">
+            <div class="place-details">
+                <h2>Potala Palace</h2>
+                <p>"Perched atop Marpo Ri Hill in Lhasa, the Potala Palace is an iconic symbol of Tibetan Buddhism and
+                    was the winter residence of the Dalai Lama. This majestic red and white palace is a masterpiece of
+                    Tibetan architecture and spirituality."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://www.worldhistory.org/img/r/p/1500x1500/7541.jpg" alt="Terracotta Army, Xi'an">
+            <div class="place-details">
+                <h2>Terracotta Army</h2>
+                <p>"Discovered in 1974, the Terracotta Army is an extraordinary archaeological find near Xi'an. This
+                    vast army of life-sized soldiers, horses, and chariots was buried with China's first emperor, Qin
+                    Shi Huang, to protect him in the afterlife."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/7c/db.jpg"
+                alt="West Lake, Hangzhou">
+            <div class="place-details">
+                <h2>West Lake</h2>
+                <p>"West Lake in Hangzhou is a tranquil and scenic retreat surrounded by pagodas, temples, and gardens.
+                    With its calm waters and misty hills, it has been a source of inspiration for poets and artists for
+                    centuries."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/ec/c6/f6/yu-gardens.jpg?w=600&h=500&s=1"
+                alt="Yu Garden, Shanghai">
+            <div class="place-details">
+                <h2>Yu Garden</h2>
+                <p>"Located in the bustling city of Shanghai, Yu Garden is a traditional Chinese garden offering serene
+                    ponds, rockeries, and pavilions. This beautiful oasis of tranquility stands in contrast to the
+                    modern skyscrapers of Shanghai."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://www.giantpandaglobal.com/wp-content/uploads/2011/11/20111128133923405.jpg"
+                alt="Giant Panda Research Base, Chengdu">
+            <div class="place-details">
+                <h2>Giant Panda Research Base</h2>
+                <p>"Chengdu is home to the Giant Panda Research Base, where visitors can observe China's beloved
+                    national animal in its natural habitat. The center is dedicated to the conservation and breeding of
+                    these endangered creatures."</p>
+            </div>
+        </div>
+
+        <div class="place">
+            <img src="https://www.visityunnanchina.com/files/2022-02/Tiger_Leaping_Gorge_Tea-Horse%20PradeGH.jpg"
+                alt="Tiger Leaping Gorge, Yunnan">
+            <div class="place-details">
+                <h2>Tiger Leaping Gorge</h2>
+                <p>"Tiger Leaping Gorge in Yunnan Province is one of the deepest gorges in the world, offering dramatic
+                    landscapes of jagged cliffs and the rushing Jinsha River below. It's a popular trekking destination
+                    for adventure enthusiasts."</p>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Travel the World. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const places = document.querySelectorAll('.place');
+
+        function revealPlaces() {
+            places.forEach((place) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = place.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    place.classList.add('visible');
+                } else {
+                    place.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealPlaces);
+        revealPlaces();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2024/03/04/202982-919365848_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>Discover Japan</h1>
+            <p>A Country of Tradition, Innovation, and Stunning Landscapes</p>
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <!-- Place 1 -->
+            <div class="place">
+                <img src="https://static.wixstatic.com/media/11062b_672131e593c046dca2992ed5b00136b1~mv2.jpg/v1/fill/w_1000,h_662,al_c,q_85,usm_0.66_1.00_0.01/11062b_672131e593c046dca2992ed5b00136b1~mv2.jpg"
+                    alt="Mount Fuji">
+                <div class="place-details">
+                    <h2>Mount Fuji</h2>
+                    <p>Mount Fuji, Japan’s iconic peak, is a must-visit for its breathtaking beauty. Whether you hike to
+                        the summit or admire it from afar, this UNESCO World Heritage site never fails to inspire awe.
+                    </p>
+                </div>
+            </div>
+            <!-- Place 2 -->
+            <div class="place">
+                <img src="https://offbeatjapan.com/wp-content/uploads/2011/10/tokyo-tower-night-landmark.jpg"
+                    alt="Tokyo Tower">
+                <div class="place-details">
+                    <h2>Tokyo Tower</h2>
+                    <p>The Tokyo Tower, an emblem of Japan’s modernity, offers panoramic city views. Its bright red
+                        structure and observation decks provide a unique glimpse of Tokyo’s vibrant skyline.</p>
+                </div>
+            </div>
+            <!-- Place 3 -->
+            <div class="place">
+                <img src="https://dskyoto.s3.amazonaws.com/gallery/full/8514/5559/7797/08-20131216_FushimiInari_Mainspot-307.jpg"
+                    alt="Fushimi Inari Shrine">
+                <div class="place-details">
+                    <h2>Fushimi Inari Shrine</h2>
+                    <p>Famous for its thousands of red torii gates, Fushimi Inari Shrine in Kyoto is a spiritual haven.
+                        Visitors enjoy serene trails leading to the sacred Mount Inari.</p>
+                </div>
+            </div>
+            <!-- Place 4 -->
+            <div class="place">
+                <img src="https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/05/kinkakuji-kyoto-golden-pavilion-1024x576.jpg"
+                    alt="Kinkaku-ji (Golden Pavilion)">
+                <div class="place-details">
+                    <h2>Kinkaku-ji (Golden Pavilion)</h2>
+                    <p>Kinkaku-ji, or the Golden Pavilion, is a stunning Zen Buddhist temple in Kyoto. Its gold-leaf
+                        exterior reflects beautifully on the surrounding pond, offering a picture-perfect setting.</p>
+                </div>
+            </div>
+            <!-- Place 5 -->
+            <div class="place">
+                <img src="https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2018/12/Hijime-Castle-at-dusk.-1024x640.jpg"
+                    alt="Himeji Castle">
+                <div class="place-details">
+                    <h2>Himeji Castle</h2>
+                    <p>Himeji Castle, a UNESCO World Heritage Site, is Japan’s most famous and well-preserved castle.
+                        Its white facade and historic significance make it a true national treasure.</p>
+                </div>
+            </div>
+            <!-- Place 6 -->
+            <div class="place">
+                <img src="https://photos.smugmug.com/Kyoto/Arashiyama-Walking-Tour/i-VFqxMrS/0/ca116127/L/shutterstock_93262912-L.jpg"
+                    alt="Arashiyama Bamboo Grove">
+                <div class="place-details">
+                    <h2>Arashiyama Bamboo Grove</h2>
+                    <p>Walking through the towering stalks of the Arashiyama Bamboo Grove in Kyoto is a magical
+                        experience. The gentle rustling of bamboo creates a tranquil and unforgettable ambiance.</p>
+                </div>
+            </div>
+            <!-- Place 7 -->
+            <div class="place">
+                <img src="https://media.istockphoto.com/id/494507741/photo/hiroshima.jpg?s=612x612&w=0&k=20&c=0lzFJG92fKkrnFyfXcOBxtTldiKmqxdG-WOOvEo1bmw="
+                    alt="Hiroshima Peace Memorial">
+                <div class="place-details">
+                    <h2>Hiroshima Peace Memorial</h2>
+                    <p>The Hiroshima Peace Memorial, or Atomic Bomb Dome, serves as a poignant reminder of the events of
+                        World War II. It stands as a symbol of hope and peace.</p>
+                </div>
+            </div>
+            <!-- Place 8 -->
+            <div class="place">
+                <img src="https://japancitytour.com/wp-content/uploads/2019/08/osaka-castle.jpeg" alt="Osaka Castle">
+                <div class="place-details">
+                    <h2>Osaka Castle</h2>
+                    <p>Osaka Castle, a historic symbol of Japan, boasts impressive architecture and lush gardens.
+                        Visitors can explore its museum to learn about its fascinating past.</p>
+                </div>
+            </div>
+            <!-- Place 9 -->
+            <div class="place">
+                <img src="https://www.datocms-assets.com/101439/1700664504-okinawa.jpg?auto=format&fit=max&w=1200"
+                    alt="Okinawa Beaches">
+                <div class="place-details">
+                    <h2>Okinawa Beaches</h2>
+                    <p>Okinawa’s pristine beaches are perfect for relaxing and water sports. With crystal-clear waters
+                        and vibrant coral reefs, it’s a paradise for beach lovers and divers alike.</p>
+                </div>
+            </div>
+            <!-- Place 10 -->
+            <div class="place">
+                <img src="https://donnykimball.com/wp-content/uploads/2023/08/A-Deer-in-front-of-Todai-ji-in-Nara-Prefecture.webp"
+                    alt="Nara Deer Park">
+                <div class="place-details">
+                    <h2>Nara Deer Park</h2>
+                    <p>Home to hundreds of free-roaming deer, Nara Deer Park is a unique attraction. Visitors can
+                        interact with these friendly creatures while exploring ancient temples and lush surroundings.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>

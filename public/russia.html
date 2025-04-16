@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            /* Make the navbar fixed to the top */
+            width: 100%;
+            /* Full width */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent black background */
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+            /* Keep it above other content */
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            /* Max width for the navigation bar */
+            margin: auto;
+            /* Center the navbar */
+            padding: 1rem 1rem;
+            /* Increased padding for a wider navbar */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Space between logo and links */
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            /* Increase font size for the logo */
+            font-weight: 600;
+            color: #ffffff;
+            /* White text color */
+            text-decoration: none;
+            /* Remove underline */
+            flex-grow: 1;
+            /* Allow the logo to take available space */
+            text-align: center;
+            /* Center the logo text */
+        }
+
+        .nav__links {
+            list-style: none;
+            /* Remove bullet points from list */
+            display: flex;
+            align-items: center;
+            /* Center the links vertically */
+            gap: 2rem;
+            /* Space between the links */
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            /* Padding for links */
+            font-weight: 500;
+            color: #ffffff;
+            /* White text color */
+            transition: 0.3s;
+            /* Transition effect */
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            /* White text color */
+            cursor: pointer;
+            /* Pointer cursor for the search icon */
+        }
+
+        /* Full-screen video section at the top */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+            /* No margin needed for the fixed navbar */
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cover the whole hero section */
+            z-index: -1;
+            /* Keep video behind other elements */
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+            margin-bottom: 30px;
+            /* Adjust this value as needed */
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            /* Adjust the offset as needed */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+
+        /* Section with place images and descriptions */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2024/03/08/203449-921267347_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h1>Discover Russia</h1>
+            <p style="margin-top: 50px;">The Land of Smiles, rich in culture, history, and natural beauty.</p>
+
+
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <div class="place">
+                <img src="https://preparetravelplans.com/wp-content/uploads/2020/03/Grand-Palace-Bangkok-Guide.jpg"
+                    alt="Grand Palace, Bangkok">
+                <div class="place-details">
+                    <h2>Grand Palace</h2>
+                    <p>
+                        "The Grand Palace in Bangkok is one of Thailand's most iconic landmarks. This dazzling complex
+                        has been the official residence of the Kings of Siam since 1782. With its majestic halls,
+                        intricate temples, and the famous Emerald Buddha, it offers a glimpse into the rich history and
+                        culture of Thailand."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://www.abstract-living.com/wp-content/uploads/2010/01/koh-phi-phi.jpg"
+                    alt="Phi Phi Islands, Thailand">
+                <div class="place-details">
+                    <h2>Phi Phi Islands</h2>
+                    <p>
+                        "The Phi Phi Islands are a group of stunning islands known for their crystal-clear waters,
+                        vibrant marine life, and breathtaking limestone cliffs. A tropical paradise, Phi Phi is famous
+                        for Maya Bay, which gained fame after being featured in the movie 'The Beach'."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://img.freepik.com/free-photo/wat-phra-that-doi-suthep-chiang-mai-thailand_335224-1144.jpg"
+                    alt="Wat Phra That Doi Suthep, Chiang Mai">
+                <div class="place-details">
+                    <h2>Wat Phra That Doi Suthep</h2>
+                    <p>
+                        "Perched atop Doi Suthep mountain, this stunning temple in Chiang Mai offers sweeping views of
+                        the city below. Wat Phra That Doi Suthep is an important pilgrimage site, with its golden chedi
+                        and intricate carvings attracting visitors from around the world."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://img.peapix.com/26a7a8d2401b4433b92deac1d46d13f0_480.jpg"
+                    alt="Ayutthaya Historical Park, Thailand">
+                <div class="place-details">
+                    <h2>Ayutthaya Historical Park</h2>
+                    <p>
+                        "A UNESCO World Heritage Site, Ayutthaya was the ancient capital of Thailand and is home to
+                        magnificent ruins, temples, and stupas. This historical park offers a glimpse into Thailand's
+                        rich cultural heritage, with towering Buddha statues and serene landscapes."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://powertraveller.com/wp-content/uploads/2024/08/1_bangkok-grand-palace-wat-pho-and-wat-arun-private-tour.jpg"
+                    alt="Wat Arun, Bangkok">
+                <div class="place-details">
+                    <h2>Wat Arun</h2>
+                    <p>
+                        "Also known as the Temple of Dawn, Wat Arun is one of Bangkok's most striking landmarks. Located
+                        on the banks of the Chao Phraya River, its towering spire and stunning riverside setting make it
+                        a must-visit, especially during sunset when it glows with golden light."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://static.wixstatic.com/media/a42022_d9867b330f8e4e659a5c25b2ba51fb35~mv2.jpg/v1/fill/w_568,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/a42022_d9867b330f8e4e659a5c25b2ba51fb35~mv2.jpg"
+                    alt="Koh Samet, Thailand">
+                <div class="place-details">
+                    <h2>Koh Samet</h2>
+                    <p>
+                        "Koh Samet is a peaceful island located in the Gulf of Thailand, known for its white sandy
+                        beaches and vibrant coral reefs. It's a popular getaway for those seeking relaxation and water
+                        activities, just a short boat ride from Bangkok."
+                    </p>
+                </div>
+            </div>
+
+            <div class="place">
+                <img src="https://lh5.googleusercontent.com/p/AF1QipPXBzWNdCo1Mkb0Slk1_kJZG88VeoeYbat6opLC=w745-h431-n-k-no"
+                    alt="Elephant Nature Park, Chiang Mai">
+                <div class="place-details">
+                    <h2>Sanctuary of Truth</h2>
+                    <p>
+                        "The Sanctuary of Truth is a magnificent all-wooden temple that embodies Thai craftsmanship and
+                        spirituality. This towering structure, intricately carved from teakwood, blends traditional
+                        Buddhist and Hindu motifs, reflecting ancient philosophies and teachings.
+                </div>
+            </div>
+            <div class="place">
+                <img src="https://live.staticflickr.com/3956/15468169419_7614217c38_b.jpg"
+                    alt="Erawan Waterfalls, Kanchanaburi">
+                <div class="place-details">
+                    <h2>Erawan Waterfalls</h2>
+                    <p>
+                        "Located in Erawan National Park, these stunning tiered waterfalls are known for their
+                        emerald-green pools and surrounding lush jungle. A favorite among hikers and nature lovers, the
+                        Erawan Waterfalls are a serene escape from the bustling cities of Thailand."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>

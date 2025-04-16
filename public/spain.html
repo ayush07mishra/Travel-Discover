@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destinations </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav__logo a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            padding: 1rem 5px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #ffcc00;
+            border-bottom: 7px solid #ffcc00;
+        }
+
+        .link span {
+            padding: 1rem 0;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero p {
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Places Section */
+        .places {
+            padding: 50px;
+            background-color: #000000;
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .place img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place img:hover {
+            transform: scale(1.05);
+        }
+
+        .place-details {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .place-details h2 {
+            font-size: 2rem;
+            color: #fffbfb;
+        }
+
+        .place-details p {
+            font-size: 1.1rem;
+            color: #a3a2a2;
+            line-height: 1.6;
+        }
+
+        .place:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .place {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .place.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .place img {
+                width: 100%;
+                height: auto;
+            }
+
+            .place {
+                flex-direction: column !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__logo"><a href="#">Discover Beyond</a></div>
+            <ul class="nav__links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="gallery.html">Gallery</a></li>
+                <li class="link"><a href="login.html">Contact</a></li>>
+                <li class="link search">
+                    <span><i class="ri-search-line"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <body>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop>
+                <source src="https://cdn.pixabay.com/video/2023/10/08/184069-872413642_tiny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>Discover Spain</h1>
+            <p>A Land of Passion, History, and Culture</p>
+        </section>
+
+        <!-- Places Section -->
+        <section class="places">
+            <!-- Place 1 -->
+            <div class="place">
+                <img src="https://cdn.britannica.com/15/194815-050-08B5E7D1/Nativity-facade-Sagrada-Familia-cathedral-Barcelona-Spain.jpg"
+                    alt="La Sagrada Familia">
+                <div class="place-details">
+                    <h2>La Sagrada Familia</h2>
+                    <p>La Sagrada Familia in Barcelona is one of the most iconic and unique architectural feats in the
+                        world. Designed by Antoni Gaudí, this basilica blends modernist, Gothic, and naturalistic forms.
+                    </p>
+                </div>
+            </div>
+            <!-- Place 2 -->
+            <div class="place">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg/640px-Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg"
+                    alt="Alhambra">
+                <div class="place-details">
+                    <h2>Alhambra</h2>
+                    <p>The Alhambra in Granada is a stunning palace and fortress complex. Its intricate Islamic
+                        architecture, lush gardens, and beautiful courtyards make it a must-visit historical site.</p>
+                </div>
+            </div>
+            <!-- Place 3 -->
+            <div class="place">
+                <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/park-guell-1.jpg" alt="Park Güell">
+                <div class="place-details">
+                    <h2>Park Güell</h2>
+                    <p>Park Güell in Barcelona, also designed by Gaudí, is a whimsical park featuring colorful mosaics,
+                        curving architecture, and spectacular views of the city, making it a UNESCO World Heritage Site.
+                    </p>
+                </div>
+            </div>
+            <!-- Place 4 -->
+            <div class="place">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Palacio_Real_de_Madrid_Julio_2016_%28cropped%29.jpg/1200px-Palacio_Real_de_Madrid_Julio_2016_%28cropped%29.jpg"
+                    alt="Royal Palace of Madrid">
+                <div class="place-details">
+                    <h2>Royal Palace of Madrid</h2>
+                    <p>The Royal Palace of Madrid is the official residence of the Spanish Royal Family. Its lavish
+                        architecture, grand halls, and magnificent gardens reflect Spain’s royal heritage.</p>
+                </div>
+            </div>
+            <!-- Place 5 -->
+            <div class="place">
+                <img src="https://www.hlimg.com/images/things2do/738X538/800px-Plaza_Mayor_de_Madrid_02_1518675382t.jpg?w=400&dpr=2.6"
+                    alt="Plaza Mayor">
+                <div class="place-details">
+                    <h2>Plaza Mayor</h2>
+                    <p>Plaza Mayor in Madrid is a grand square surrounded by historic buildings. Its vibrant atmosphere,
+                        perfect for dining and people-watching, makes it a central hub in Spain's capital.</p>
+                </div>
+            </div>
+            <!-- Place 6 -->
+            <div class="place">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sevilla_Cathedral_-_Southeast.jpg/1200px-Sevilla_Cathedral_-_Southeast.jpg"
+                    alt="Seville Cathedral">
+                <div class="place-details">
+                    <h2>Seville Cathedral</h2>
+                    <p>Seville Cathedral is the largest Gothic cathedral in the world. It houses stunning art and the
+                        tomb of Christopher Columbus, with breathtaking views from its Giralda tower.</p>
+                </div>
+            </div>
+            <!-- Place 7 -->
+            <div class="place">
+                <img src="https://media.cntraveler.com/photos/667dc07153edfa7d89ed8abe/16:9/w_2560,c_limit/Muse%CC%81e%20Picasso%20Paris_K30BPM.jpg"
+                    alt="Picasso Museum">
+                <div class="place-details">
+                    <h2>Picasso Museum</h2>
+                    <p>The Picasso Museum in Barcelona showcases the works of Pablo Picasso. With over 4,000 pieces, the
+                        museum is a tribute to the influential artist’s development and creativity.</p>
+                </div>
+            </div>
+            <!-- Place 8 -->
+            <div class="place">
+                <img src="https://www.arabianbusiness.com/cloud/2021/09/17/CVj8e9Rd-1_GUGGENHEIM-ANNIVERSARY_860270482.jpg"
+                    alt="Guggenheim Museum Bilbao">
+                <div class="place-details">
+                    <h2>Guggenheim Museum Bilbao</h2>
+                    <p>The Guggenheim Museum in Bilbao is a striking piece of modern architecture. Its curvaceous
+                        titanium structure houses impressive contemporary art exhibitions, drawing art lovers from
+                        around the world.</p>
+                </div>
+            </div>
+            <!-- Place 9 -->
+            <div class="place">
+                <img src="https://air-production-cms-uploads.storage.googleapis.com/uploads/2022/09/05075051/alojamiento-en-pamplona.jpg"
+                    alt="Pamplona">
+                <div class="place-details">
+                    <h2>Pamplona</h2>
+                    <p>Pamplona is famous for the Running of the Bulls during the San Fermín festival. The event
+                        attracts visitors worldwide who come for the thrill and the vibrant local celebrations.</p>
+                </div>
+            </div>
+            <!-- Place 10 -->
+            <div class="place">
+                <img src="https://www.backroads.com/sites/default/files/styles/trip_gallery_full/public/2023/WSTI_RWO_ST_17_098.jpg.webp?itok=bQ0zKWGS"
+                    alt="Camino de Santiago">
+                <div class="place-details">
+                    <h2>Camino de Santiago</h2>
+                    <p>The Camino de Santiago is a famous pilgrimage route across northern Spain. Pilgrims walk through
+                        picturesque landscapes, quaint villages, and historic towns to reach the shrine of St. James in
+                        Santiago de Compostela.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Travel the World. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const places = document.querySelectorAll('.place');
+
+            function revealPlaces() {
+                places.forEach((place) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = place.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        place.classList.add('visible');
+                    } else {
+                        place.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealPlaces);
+            revealPlaces();
+        </script>
+
+    </body>
+
+</html>
